@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './heroes/pages/home/home.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes : Route[] = [
@@ -10,6 +11,11 @@ const routes : Route[] = [
     loadChildren: 
       () => import('./auth/auth.module')
               .then( m => m.AuthModule)
+  },
+  {
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full'
   },
   {
     path:'heroes',
