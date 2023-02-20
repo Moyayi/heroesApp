@@ -2,6 +2,7 @@
   "name": "heroes-app",
   "version": "0.0.0",
   "scripts": {
+    "dev": "concurrently  \" ng serve \"  \" json-server --watch ./server/db.json \" ",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -21,6 +22,8 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "concurrently": "^7.6.0",
+    "json-server": "^0.17.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
