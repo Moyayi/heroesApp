@@ -3,12 +3,13 @@
     <mat-sidenav #sidenav mode="push">
 
         <mat-toolbar>
-            
-            <button mat-button
+            <span>Menu</span>
+            <span class="spacer"></span>
+            <button mat-icon-button
                     (click)="sidenav.toggle()"
             >
                 <mat-icon>menu</mat-icon>
-                <span>Menu</span>
+
             </button>
         </mat-toolbar>
 
