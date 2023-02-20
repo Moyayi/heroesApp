@@ -5,20 +5,22 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material/material.module';
+import { HeroesRoutingModule } from './heroes/heroes-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    HomeComponent
+    
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    HeroesRoutingModule ,
+    MaterialModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
