@@ -1,7 +1,6 @@
 # HeroesApp
 
-In order to deploy the App you have to use `npm run dev` to up server and client side
-
+In order to pull up the App you have to use `npm run dev` to pull up server and client side at the same time, you can see the command in the package.json in the scripts section
 # Version
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
