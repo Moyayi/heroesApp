@@ -16,7 +16,9 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-button>
+        <button mat-button
+            [routerLink]="['/heroes', hero.id]"
+        >
             Leer más...
         </button>
 

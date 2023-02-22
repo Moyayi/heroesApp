@@ -1,0 +1,28 @@
+.waiting{ 
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardHero{
+    margin-top: 2rem;
+    gap:20px;
+}
+.c1 img{
+    border-radius: 15px;
+}
+
+.c2{
+    padding: 0px 1rem;
+    max-width: 200px;
+    font-size: 1rem;
+}
+.c2 .title{
+    text-align: center;
+}
+.c2 .infoTitle{
+    text-decoration: underline;
+    font-size: 1.25rem;
+}

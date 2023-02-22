@@ -1,1 +1,62 @@
-<p>heroe works!</p>
+<div *ngIf="foundHero ; else notfound">
+    <div class="waiting" *ngIf="!hero ; else prueba">
+        <mat-spinner></mat-spinner>
+    </div>
+    
+    <ng-template #prueba>
+        <div 
+            class="cardHero"
+            fxLayout="row wrap"
+            fxLayoutGap="50px"
+        >
+            <div class="c1" 
+                fxFlex="40"
+                fxFlex.xs="100" 
+                fxFlex.sm="100"
+                fxLayoutAlign="center"
+                
+            >
+                <img [src]="hero | imagen">
+            </div>
+
+            <div class="c2" fxFlex="40" fxFlex.xs="100" fxFlex.sm="100">
+                <h1 class="title">{{hero.superhero | titlecase}}</h1>
+                <hr width="40%">
+                <br>
+                <p>
+                    <span class="infoTitle">Alter Ego:</span>
+                    <span> {{ hero.alter_ego | titlecase}} </span>
+                    <br><br>
+
+                    <span class="infoTitle">Editorial:</span>
+                    <span> {{ hero.publisher | titlecase}} </span>
+                    <br><br>
+
+                    <span class="infoTitle">Primera aparición:</span>
+                    <span> {{ hero.first_appearance | titlecase}} </span>
+                    <br><br>
+
+                    <span class="infoTitle">Personas que son {{ hero.superhero }}:</span>
+                    <span> {{ hero.characters | titlecase}} </span>
+                    <br><br>
+                </p>
+                <!-- <h3>Alter Ego: <span>{{ hero.alter_ego | titlecase}}</span></h3>
+                <h3>Editorial: <span>{{ hero.publisher | titlecase}}</span></h3>
+                <h3> Primera aparición: <span>{{ hero.first_appearance | titlecase}}</span></h3>
+                <h3> Personas que son {{ hero.superhero }}: <span>{{ hero.characters | titlecase}}</span></h3> -->
+
+                <h1 class="title">Biografía</h1>
+                <hr width="40%">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio eveniet sed ullam minus debitis! 
+                    Consectetur ab quos, officiis, temporibus, laborum numquam omnis non a iure obcaecati fugiat 
+                    molestias expedita quasi?
+                </p>
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+<ng-template #notfound>
+    <h1>No se ha encontrado heroe</h1>
+</ng-template>
