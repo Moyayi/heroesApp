@@ -9,8 +9,18 @@
            (input)="buscandoHeroe()"
            >
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="opcionSeleccionada( $event )">
-      <mat-option *ngFor="let hero of heroes" [value]="hero">
-        {{hero.superhero}}
-      </mat-option>
+
+            <mat-option *ngFor="let hero of heroes" [value]="hero">
+            {{hero.superhero}}
+            </mat-option>
+
+            <mat-option value="" *ngIf="sinResultados">
+                <span>No se encontró ningún heroe</span>
+            </mat-option>
+
     </mat-autocomplete>
   </mat-form-field>
+
+  <div>
+    {{sinResultados}}
+  </div>

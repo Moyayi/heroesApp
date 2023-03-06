@@ -8,28 +8,40 @@ import { HeroesService } from '../../services/heroes.service';
   templateUrl: './buscar.component.html',
   styleUrls: ['./buscar.component.css']
 })
-export class BuscarComponent implements OnInit{
+export class BuscarComponent {
 
   constructor(private service : HeroesService){}
   heroes !: Heroe[];
   termino : string = ""
   private _lastHeroSearched !: Heroe;
-  ngOnInit():void{
-    this.service.getHeroes()
-      .subscribe({
-        next : (data) => {
-          this.heroes = data
-        }
-      })
-  }
+  heroeSeleccionado !: Heroe;
+  sinResultados : boolean = false;
+
   buscandoHeroe():void{
     this.service.getSugerencias(this.termino)
-      .subscribe(data => this.heroes = data)
+      .subscribe({
+        next : (data) => {
+          this.heroes = data;
+          if(this.heroes.length <= 0){
+            this.sinResultados = true;
+          }else{
+            this.sinResultados = false;
+          }
+        }
+      })
+
   }
   opcionSeleccionada(event : MatAutocompleteSelectedEvent  ) : void {
-    const heroe : Heroe = event.option.value;
-    this.termino = heroe.superhero;
-    
+    if(event.option.value !== ""){
+      const heroe : Heroe = event.option.value;
+      this.termino = heroe.superhero;
+  
+      this.service.getHeroeById(heroe.id!)
+        .subscribe(data => this.heroeSeleccionado = data)
+    }else{
+      this.termino = ""
+    }
+
     //TODO fix bug that click in the same hero will return [object Object] instead of the name of the hero
     // if(this._lastHeroSearched !== undefined){
     //   if(this._lastHeroSearched.superhero !== heroe.superhero){
