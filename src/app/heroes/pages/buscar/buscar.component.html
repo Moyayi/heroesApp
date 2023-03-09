@@ -21,6 +21,17 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  <div>
-    {{sinResultados}}
+  <div *ngIf="heroes !== undefined" 
+    class="container"
+    fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+  >
+    <div *ngFor="let results of heroes"
+        fxFlex.sm="30"
+        fxFlex="20"
+        fxFlex.lg="15"
+        >
+        <app-heroe-tarjeta [hero]="results"></app-heroe-tarjeta>
+    </div>
   </div>

@@ -23,6 +23,7 @@ export class BuscarComponent {
         next : (data) => {
           this.heroes = data;
           if(this.heroes.length <= 0){
+            console.log("Enmtra")
             this.sinResultados = true;
           }else{
             this.sinResultados = false;
