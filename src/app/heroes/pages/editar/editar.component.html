@@ -1,1 +1,90 @@
-<p>editar works!</p>
+<div 
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="40px">
+
+    <div fxFlex="50" fxLayout="column">
+
+        <div 
+            fxLayout="row" 
+            fxLayout.xs="column"
+            fxLayoutGap="20">
+
+            <mat-form-field >
+                <mat-label>Super Héroe</mat-label>
+                <input 
+                    matInput
+                    type="text"
+                    [(ngModel)]="heroe.superhero"
+                    required=""
+                >
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Alter Ego</mat-label>
+                <input 
+                    matInput
+                    type="text"
+                    [(ngModel)]="heroe.alter_ego"
+                    required=""
+                >
+            </mat-form-field>
+        </div>
+       
+
+        <mat-form-field>
+            <mat-label>Primera aparición</mat-label>
+            <input 
+                matInput
+                type="text"
+                [(ngModel)]="heroe.first_appearance"
+                required=""
+            >
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Personajes</mat-label>
+            <input 
+                matInput
+                type="text"
+                [(ngModel)]="heroe.characters"
+                required=""
+            >
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Creador</mat-label>
+            <mat-select required="" 
+                [(ngModel)]="heroe.publisher"
+            >
+                <mat-option *ngFor="let pub of publisher" [value]="pub.id">
+                    {{pub.desc}}
+                </mat-option>
+
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Foto URL</mat-label>
+            <input 
+                matInput
+                type="url"
+                [(ngModel)]="heroe.alt_img"
+                required=""
+                placeholder="assets/heroes/{{heroe.id}}"
+            >
+        </mat-form-field>
+        <button mat-raised-button
+            (click)="GuardarCambios()"
+        > 
+            <mat-icon>
+                edit
+            </mat-icon>
+            Guardar
+        </button>
+    </div>
+    
+    <div fxFlex="50">
+        <img [src]="heroe | imagen" alt="">
+    </div>
+</div>

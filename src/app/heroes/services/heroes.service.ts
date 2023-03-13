@@ -26,4 +26,8 @@ export class HeroesService {
   agregarHeroe( heroe: Heroe ) : Observable<Heroe>{
     return this.http.post<Heroe>(`${this.endPointApi}/heroes`, heroe)
   }
+
+  editarHeroe( heroe : Heroe): Observable<Heroe>{
+    return this.http.put<Heroe>(`${this.endPointApi}/heroes`,heroe)
+  }
 }
