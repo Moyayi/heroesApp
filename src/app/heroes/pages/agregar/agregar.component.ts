@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Heroe, Publisher } from '../../interfaces/heroe.interface';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-agregar',
@@ -7,6 +8,8 @@ import { Heroe, Publisher } from '../../interfaces/heroe.interface';
   styleUrls: ['./agregar.component.css']
 })
 export class AgregarComponent {
+
+  constructor(private service : HeroesService){}
 
   heroe : Heroe = {
     superhero : '',
@@ -26,4 +29,15 @@ export class AgregarComponent {
       desc : 'Marvel - Comics'
     } 
   ] 
+
+  GuardarDatos() : void{
+    if(this.heroe.superhero.trim().length === 0){
+      return ;
+    }
+
+    this.service.agregarHeroe(this.heroe)
+      .subscribe( resp => {
+        console.log('Respuesta', resp)
+      })
+  }
 }

@@ -22,4 +22,8 @@ export class HeroesService {
   getSugerencias ( termino : string ) : Observable<Heroe[]>{
     return this.http.get<Heroe[]>(`${this.endPointApi}/heroes?q=${termino}&_limit=${this._limit}`);
   }
+
+  agregarHeroe( heroe: Heroe ) : Observable<Heroe>{
+    return this.http.post<Heroe>(`${this.endPointApi}/heroes`, heroe)
+  }
 }

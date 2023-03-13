@@ -1,16 +1,23 @@
 <h1>Nuevo heroe</h1>
 
-<div fxLayout="row" fxLayoutGap="40px">
+<div 
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="40px">
 
     <div fxFlex="50" fxLayout="column">
 
-        <div fxLayout="row" fxLayoutGap="20">
+        <div 
+            fxLayout="row" 
+            fxLayout.xs="column"
+            fxLayoutGap="20">
 
-            <mat-form-field>
+            <mat-form-field >
                 <mat-label>Super Héroe</mat-label>
                 <input 
                     matInput
                     type="text"
+                    [(ngModel)]="heroe.superhero"
                     required=""
                 >
             </mat-form-field>
@@ -20,6 +27,7 @@
                 <input 
                     matInput
                     type="text"
+                    [(ngModel)]="heroe.alter_ego"
                     required=""
                 >
             </mat-form-field>
@@ -31,6 +39,7 @@
             <input 
                 matInput
                 type="text"
+                [(ngModel)]="heroe.first_appearance"
                 required=""
             >
         </mat-form-field>
@@ -40,13 +49,16 @@
             <input 
                 matInput
                 type="text"
+                [(ngModel)]="heroe.characters"
                 required=""
             >
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Creador</mat-label>
-            <mat-select>
+            <mat-select required="" 
+                [(ngModel)]="heroe.publisher"
+            >
                 <mat-option *ngFor="let pub of publisher" [value]="pub.id">
                     {{pub.desc}}
                 </mat-option>
@@ -59,10 +71,13 @@
             <input 
                 matInput
                 type="url"
+                [(ngModel)]="heroe.alt_img"
                 required=""
             >
         </mat-form-field>
-        <button mat-raised-button>
+        <button mat-raised-button
+            (click)="GuardarDatos()"
+        > 
             <mat-icon>
                 edit
             </mat-icon>
