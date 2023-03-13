@@ -22,7 +22,9 @@
             Leer más...
         </button>
 
-        <button mat-button>
+        <button mat-button
+            [routerLink]="['/heroes/editar', hero.id]"
+        >
             Editar
         </button>
     </mat-card-actions>
