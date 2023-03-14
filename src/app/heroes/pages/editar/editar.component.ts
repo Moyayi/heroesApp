@@ -45,7 +45,8 @@ export class EditarComponent implements OnInit{
   ] 
 
 
-  GuardarCambios():void{
-
+  ActualizarCambios():void{
+    this.service.actualizarHeroe(this.heroe)
+      .subscribe( heroe => console.log('Actualizando ', heroe))
   }
 }

@@ -35,6 +35,7 @@ export class AgregarComponent {
       return ;
     }
 
+    console.log(this.heroe.id)
     this.service.agregarHeroe(this.heroe)
       .subscribe( resp => {
         console.log('Respuesta', resp)
