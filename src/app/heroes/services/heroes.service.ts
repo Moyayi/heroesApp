@@ -28,6 +28,6 @@ export class HeroesService {
   }
 
   actualizarHeroe( heroe : Heroe): Observable<Heroe>{
-    return this.http.put<Heroe>(`${this.endPointApi}/heroes`,heroe)
+    return this.http.put<Heroe>(`${this.endPointApi}/heroes/${heroe.id}`,heroe)
   }
 }

@@ -12,6 +12,8 @@
 }
 .c1 img{
     border-radius: 15px;
+    max-width: 700px;
+    height: 700px;
 }
 
 .c2{
