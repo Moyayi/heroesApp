@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Heroe, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { switchMap } from 'rxjs/operators'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar',
@@ -14,6 +15,8 @@ export class EditarComponent implements OnInit{
   constructor( 
     private service : HeroesService,
     private activatedRoute : ActivatedRoute,  
+    private router : Router,
+    private snackBar : MatSnackBar
   ){}
 
   ngOnInit(): void {
@@ -47,6 +50,20 @@ export class EditarComponent implements OnInit{
 
   ActualizarCambios():void{
     this.service.actualizarHeroe(this.heroe)
-      .subscribe( heroe => console.log('Actualizando ', heroe))
+      .subscribe( heroe => this.mostrarSnackBar("Se ha actualizado el heroe"))
+  }
+  BorrarHeroe(){
+    this.service.borrarHeroe(this.heroe.id!)
+      .subscribe(resp => {
+        this.router.navigate(['/heroes'])
+      })
+  }
+
+
+  mostrarSnackBar( mensaje : string) { 
+    this.snackBar.open( mensaje , 'Cerrar', {
+      duration: 2500,
+      
+    })
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Heroe, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -9,7 +10,11 @@ import { HeroesService } from '../../services/heroes.service';
 })
 export class AgregarComponent {
 
-  constructor(private service : HeroesService){}
+  constructor(
+      private service : HeroesService,
+      private router : Router,
+
+    ){}
 
   heroe : Heroe = {
     superhero : '',
@@ -34,11 +39,11 @@ export class AgregarComponent {
     if(this.heroe.superhero.trim().length === 0){
       return ;
     }
-
-    console.log(this.heroe.id)
     this.service.agregarHeroe(this.heroe)
       .subscribe( resp => {
-        console.log('Respuesta', resp)
+        this.router.navigate(['/heroes/', resp.id])
       })
   }
+
+
 }

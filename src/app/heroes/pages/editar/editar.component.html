@@ -74,14 +74,27 @@
                 placeholder="assets/heroes/{{heroe.id}}"
             >
         </mat-form-field>
-        <button mat-raised-button
-            (click)="ActualizarCambios()"
-        > 
-            <mat-icon>
-                edit
-            </mat-icon>
-            Actualizar
-        </button>
+        <div fxLayout>
+            <button mat-raised-button
+                (click)="ActualizarCambios()"
+            > 
+                <mat-icon>
+                    edit
+                </mat-icon>
+                Actualizar
+            </button>
+            <span class="spacer"></span>
+            <button mat-raised-button color="warn"
+                (click)="BorrarHeroe()"
+            > 
+                <mat-icon>
+                    remove
+                </mat-icon>
+                Borrar
+            </button>
+
+        </div>
+        
     </div>
     
     <div fxFlex="50">
