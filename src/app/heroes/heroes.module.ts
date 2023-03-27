@@ -15,6 +15,7 @@ import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.
 import { ImagenPipe } from './pipes/imagen.pipe';
 import { FormsModule } from '@angular/forms';
 import { EditarComponent } from './pages/editar/editar.component';
+import { ConfirmarComponent } from './components/confirmar/confirmar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditarComponent } from './pages/editar/editar.component';
     ListadoComponent,
     HeroeTarjetaComponent,
     ImagenPipe,
-    EditarComponent
+    EditarComponent,
+    ConfirmarComponent
   ],
   imports: [
     CommonModule,

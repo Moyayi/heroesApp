@@ -4,6 +4,9 @@ import { Heroe, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { switchMap } from 'rxjs/operators'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarComponent } from '../../components/confirmar/confirmar.component';
+
 
 @Component({
   selector: 'app-editar',
@@ -16,7 +19,8 @@ export class EditarComponent implements OnInit{
     private service : HeroesService,
     private activatedRoute : ActivatedRoute,  
     private router : Router,
-    private snackBar : MatSnackBar
+    private snackBar : MatSnackBar,
+    private dialog : MatDialog
   ){}
 
   ngOnInit(): void {
@@ -53,17 +57,27 @@ export class EditarComponent implements OnInit{
       .subscribe( heroe => this.mostrarSnackBar("Se ha actualizado el heroe"))
   }
   BorrarHeroe(){
-    this.service.borrarHeroe(this.heroe.id!)
-      .subscribe(resp => {
-        this.router.navigate(['/heroes'])
-      })
+    const dialog  = this.dialog.open(ConfirmarComponent,{
+      data: {...this.heroe}
+    })
+
+    dialog.afterClosed().subscribe(
+      (result) => {
+        if(result){
+          this.service.borrarHeroe(this.heroe.id!)
+            .subscribe(resp => {
+              this.router.navigate(['/heroes'])
+            })
+        }
+      }
+    )
+
   }
 
 
   mostrarSnackBar( mensaje : string) { 
     this.snackBar.open( mensaje , 'Cerrar', {
       duration: 2500,
-      
     })
   }
 }

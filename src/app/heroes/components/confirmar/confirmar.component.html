@@ -1,0 +1,16 @@
+<div class="dialogBox">
+    <h1>
+        ¿Estás seguro?
+    </h1>
+    <hr>
+    <p>
+        Está a punto de borrar a {{ this.data.superhero }} 
+        <br>
+        ¿Desea continuar?
+    </p>
+
+    <div class="buttons">
+        <button mat-button (click)="borrar()" color="warn">Sí, borrar!</button>
+        <button mat-button (click)="cancelar()">Cancelar</button>
+    </div>
+</div>
