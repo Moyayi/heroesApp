@@ -9,12 +9,16 @@ export class ImagenPipe implements PipeTransform {
   transform(hero: Heroe): String {
     
     let imagen = "assets/no-image.png"
-
-    if(hero.alt_img !== undefined){
-      imagen = hero.alt_img;
-    }else if(hero.id !== undefined){
-      imagen = `assets/heroes/${hero.id}.jpg`;
+    if(hero.superhero === ""){
+      return imagen
+    }else{
+      if(hero.alt_img !== undefined){
+        imagen = hero.alt_img;
+      }else if(hero.id !== undefined){
+        imagen = `assets/heroes/${hero.id}.jpg`;
+      }
     }
+
 
     return imagen;
     // return (hero.id !== undefined) 
