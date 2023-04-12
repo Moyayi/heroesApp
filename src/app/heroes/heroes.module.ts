@@ -35,6 +35,7 @@ import { ConfirmarComponent } from './components/confirmar/confirmar.component';
     FlexLayoutModule,
     MaterialModule,
     FormsModule
-  ]
+  ],
+
 })
 export class HeroesModule { }

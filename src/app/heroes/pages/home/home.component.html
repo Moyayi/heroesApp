@@ -53,11 +53,25 @@
 
         <span class="spacer"></span>
 
-        <button mat-button
-                (click)="null"
-        >
+        <span> {{ auth.usuario }} </span>
+
+
+        <div *ngIf="logged ; else notlogged">
+            <button mat-button
+            (click)="login()"
+            >
+            <mat-icon>login</mat-icon> Login
+            </button>
+        </div>
+
+        <ng-template #notlogged>
+            <button mat-button
+            (click)="logout()"
+            >
             <mat-icon>logout</mat-icon> Logout
-        </button>
+            </button>
+        </ng-template>
+        
     </mat-toolbar>
 
     <div class="container">
